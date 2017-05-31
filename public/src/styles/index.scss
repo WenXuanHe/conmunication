@@ -1,0 +1,84 @@
+$chat_width:1024px;
+$chat_height:500px;
+$chat_header_height:72px;
+$chat_body_left:220px;
+
+$body_bc:#eff4f5;
+body{
+    background:$body_bc;
+}
+body,div{
+    margin:0;
+    padding:0;
+
+}
+
+@mixin prefix($name, $value){
+    -webkit-#{$name}:$value;
+    -o-#{$name}:$value;
+    -moz-#{$name}:$value;
+    #{$name}:$value;
+}
+@mixin flex{
+    @include prefix('display', flex);
+}
+@mixin col($column){
+    @if $column > 0 { width:(100%/$column)}
+    @else {flex:1}
+}
+
+.flex{
+    @include flex;
+    .col{
+        @include col(0);
+    }
+    @for $i from 1 to 7{
+        .col-#{$i}{
+            @include col($i);
+        }
+    }
+}
+
+
+.chat_box{
+    width: $chat_width;
+    height: $chat_height;
+    background:#ffffff;
+    position:absolute;
+    left:50%;
+    top:2.5em;
+    margin-left:-($chat_width/2);
+    header{
+        background:#35B3E1;
+        height:$chat_header_height;
+        line-height:$chat_header_height;
+        color:#ffffff;
+        padding-left:.5em;
+    }
+
+    .chat_content{
+        height: $chat_height - $chat_header_height;
+
+        .chat_content_left{
+            width: $chat_body_left;
+            height:100%;
+            border-right:1px solid rgb(226, 234, 236);
+
+        }
+    }
+
+    .chat_content_body{
+        position:relative;
+        .chat_field{
+            position:absolute;
+            bottom:0;
+            width: 100%;
+            input{
+                display: inline-block;
+                width: 100%;
+                height: 20px;
+            }
+        }
+    }
+}
+
