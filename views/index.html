@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block content %}
-<input type="hidden" id="remoteAdress"  value={{remoteAddress}}  />
 <div class="chat_box">
     <header class="chat_header">
         <!-- <img src="" /> -->
@@ -14,6 +13,10 @@
     <div class="chat_content flex">
         <div class="chat_content_left">
             <ul class="u-roomList" id="roomList"> </ul>
+            <div class="chat_field">
+              <input type="text" id="roomName" />
+              <input type="button" id="addRoomList" value='新增房间'/>
+            </div>
         </div>
         <div class="chat_content_body col">
             <div class="chat_content_body_area" id="message"></div>

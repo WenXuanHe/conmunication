@@ -18,10 +18,9 @@ export default class Chat{
     }   
 
     //新建房间
-    createRoom(){
+    createRoom(newRoomName){
         this.socket.emit("createRoom", {
-            newRoomName:newRoomName,
-            oldRoom:$('.current').text()
+            newRoomName:newRoomName
         });
     }
 

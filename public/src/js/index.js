@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import $ from 'jquery';
+import Cookies from 'js-cookie';
 import Chat from './chat';
 
 let socket = io.connect();
@@ -11,16 +12,19 @@ peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
     //客户端与服务端之间的 WebSocket 通讯连接打开之后，客户端就向服务端发送一条握手消息
     socket.emit('hander', {
-        peerID:id,
-        remoteAdress:$("#remoteAdress").val()
+        peerID:id
     }); 
 });
 
-chat.getRoomList();
+// chat.getRoomList();
 
 socket.on("message", function(message){
     var newElement = $("<div></div>").text(message.text);
     $("#message").append(newElement);
+});
+
+socket.on('SOCKETID', function(id){
+    Cookies.set('SOCKETID', id);
 });
 
 socket.on("ChangeNameResult", function(newName){
@@ -41,9 +45,9 @@ socket.on("join", function(res){
 
 //接收房间列表信息
 socket.on('roomList', function(roomList){
-    console.log(roomList);
+
+    $('#roomList').empty();
     roomList.forEach(function(item){
-        
         $('#roomList').append($('<li></li>').text(item));
     });
     
@@ -53,6 +57,12 @@ $("#send-button").click(function(){
     chat.sendMessage(document.querySelector('#inputValue').value);
     document.querySelector('#inputValue').value="";
 });
+
+$("#addRoomList").click(function(){
+    chat.createRoom($('#roomName').val());
+    document.querySelector('#roomName').value="";
+});
+
 window.onkeydown = function(e){
     var ev = e || window.event;
     if(ev.keyCode==13){
