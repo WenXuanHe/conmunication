@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const app = new Koa();
+const http = require('http');
 const views = require('koa-views');
 const json = require('koa-json');
 const onerror = require('koa-onerror');
@@ -9,9 +10,12 @@ const render = require('koa-swig');
 const co = require('co');
 const path = require('path');
 const index = require('./routes/index');
-
+const ExpressPeerServer = require('peer').ExpressPeerServer;
 // error handler
 onerror(app);
+var options = {
+    debug: true
+};
 
 app.context.render = co.wrap(render({
     root: path.join(__dirname, '/views'),
@@ -26,7 +30,7 @@ app.use(bodyparser);
 app.use(json());
 app.use(logger());
 app.use(require('koa-static')(__dirname + '/public'));
-
+ 
 app.use(views(__dirname + '/views', {
   extension: 'jade'
 }));
@@ -39,7 +43,16 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
+let server = http.createServer(app.callback());
 // routes
-app.use(index.routes(), index.allowedMethods());
+app.use(index.routes(), index.allowedMethods(), ExpressPeerServer(server, options));
+
+server.on('connection', function(id) { 
+  console.log("id" + id + "is connection");
+});
+
+server.on('disconnect', function(id) { 
+  console.log("id" + id + "is disconnect");
+});
 
 module.exports = app;

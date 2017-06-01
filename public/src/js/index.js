@@ -4,6 +4,18 @@ import Chat from './chat';
 
 let socket = io.connect();
 let chat = new Chat(socket);
+////Create the Peer object
+var peer = new Peer({key: 'o220qcegi78k6gvi'});
+
+peer.on('open', function(id) {
+  console.log('My peer ID is: ' + id);
+    //客户端与服务端之间的 WebSocket 通讯连接打开之后，客户端就向服务端发送一条握手消息
+    socket.emit('hander', {
+        peerID:id,
+        remoteAdress:$("#remoteAdress").val()
+    }); 
+});
+
 chat.getRoomList();
 
 socket.on("message", function(message){

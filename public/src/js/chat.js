@@ -15,7 +15,7 @@ export default class Chat{
     //改名
     changeName(newName){
         this.socket.emit("changeName", newName);
-    }
+    }   
 
     //新建房间
     createRoom(){
@@ -28,7 +28,7 @@ export default class Chat{
     getRoomList(){
         this.socket.emit('getRoomList');
     }
-    
+
     //加入房间
     joinRoom(roomName){
         this.socket.emit("joinRoom", {

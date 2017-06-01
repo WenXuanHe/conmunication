@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
-{% block title %} 博客 {% endblock %}
+{% block title %} {{title}} {% endblock %}
 {% block head %}
     <link rel="stylesheet" type="text/css" href="/dist/styles/style.css">
 {% endblock %}
 
 {% block content %}
-
+<input type="hidden" id="remoteAdress"  value={{remoteAddress}}  />
 <div class="chat_box">
     <header class="chat_header">
         <!-- <img src="" /> -->
@@ -25,5 +25,7 @@
     </div>
 </div>
     <script type="text/javascript" src="/socket.io/socket.io.js" ></script>
+    <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+
     <script type="text/javascript" src="/dist/index.js"></script>
 {% endblock %}
