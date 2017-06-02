@@ -1,0 +1,91 @@
+/************* 变量集合区 *********/
+
+$chat_width:1024px;
+$chat_height:500px;
+$chat_header_height:72px;
+$chat_body_left:220px;
+$white:#ffffff;
+$red:#ff595f;
+$green:#21d376;
+$dark:#8190b5;
+$block:#374051;
+$blue:#52ADE7;
+$body_bc:#eff4f5;
+
+/************* 变量集合区 *********/
+
+@mixin shadow($color){
+    box-shadow: 0px 5px 30px $color;
+}
+@mixin prefix($name, $value){
+    -webkit-#{$name}:$value;
+    -o-#{$name}:$value;
+    -moz-#{$name}:$value;
+    #{$name}:$value;
+}
+@mixin flex{
+    @include prefix('display', flex);
+}
+@mixin col($column){
+    @if $column > 0 { width:(100%/$column)}
+    @else {flex:1}
+}
+
+@mixin emCalc($props,$sizes,$base:$base-font-size){
+    $values: ();
+    $sublists: false;
+    @each $s in $sizes {
+        //循环列表中多个属性值，例如text-shadow属性
+        @if type-of($s) == list {
+            $sublists: true;
+            $vv: ();
+            @each $ss in $s {
+                $vv: append($vv,if(type-of($ss) == number, #{$ss / $base}em, $ss));
+            }
+            $values: append($values,join((), $vv));
+            }
+        @else {
+            $values: append($values,if(type-of($s) == number, #{$s / $base}em, $s));
+        }
+    }
+    $value: join((), $values, if($sublists,comma,space));
+    @each $prop in $props {
+        #{$prop}: $value
+    }
+}
+
+@mixin h($h, $base){
+    @include emCalc(height,$h, $base);
+    @include emCalc(line-height,$h, $base);
+}
+
+@mixin btn($base:$btn-font-size){
+    $btn-font-size:16 !default;
+    @include emCalc(font-size, $base, 16);//基于父元素的font-size
+    display:inline-block;
+    ///基于元素本身的font-size
+    @include h(34, $base);
+    @include emCalc(border-radius, 3, $base);
+    @include emCalc(padding, (0 14), $base);
+    @include emCalc(margin-right, 10, $base);
+    background: #fff;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    color: #333;
+    &.btn-green{
+        color:$white;
+        background:$green linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+        background-color:$green;
+    }
+    &.btn-red{
+        color:$white;
+        background:$red linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+        background-color:$red;
+    }
+    &.btn-dark{
+        color:$white;
+        background: $dark linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+        background-color:$dark;
+    }
+}

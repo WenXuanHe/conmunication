@@ -1,31 +1,5 @@
-$chat_width:1024px;
-$chat_height:500px;
-$chat_header_height:72px;
-$chat_body_left:220px;
-
-$body_bc:#eff4f5;
-body{
-    background:$body_bc;
-}
-body,div{
-    margin:0;
-    padding:0;
-
-}
-
-@mixin prefix($name, $value){
-    -webkit-#{$name}:$value;
-    -o-#{$name}:$value;
-    -moz-#{$name}:$value;
-    #{$name}:$value;
-}
-@mixin flex{
-    @include prefix('display', flex);
-}
-@mixin col($column){
-    @if $column > 0 { width:(100%/$column)}
-    @else {flex:1}
-}
+@import './reset.scss';
+@import './mixin.scss';
 
 .flex{
     @include flex;
@@ -38,24 +12,59 @@ body,div{
         }
     }
 }
+.btn{
+    @include btn(16);
+}
+.w30{
+    width: 30px;
+}
+.w100{
+    width: 100px;
+}
 
+.area {
+    background: #eff4f5;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+}
+.form-control{
+    padding: 6px 12px;
+    margin-right: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color:#555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.075);
+    &:focus{
+        border-color: $blue;
+    }
+}
 
 .chat_box{
     width: $chat_width;
     height: $chat_height;
     background:#ffffff;
     position:absolute;
+    @include shadow(rgba(0,0,0,0.5));
     left:50%;
     top:2.5em;
     margin-left:-($chat_width/2);
-    header{
+    >header{
         background:#35B3E1;
         height:$chat_header_height;
         line-height:$chat_header_height;
         color:#ffffff;
         padding-left:.5em;
     }
-
+    .header{
+        border-bottom: 1px solid #E2EAEC;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+    }
     .chat_content{
         height: $chat_height - $chat_header_height;
 
@@ -66,18 +75,27 @@ body,div{
 
         }
     }
-
     .chat_content_body, .chat_content_left{
         position:relative;
         .chat_field{
             position:absolute;
             bottom:0;
             width: 100%;
-            input{
-                display: inline-block;
-                width: 100%;
-                height: 20px;
-            }
+        }
+    }
+}
+
+.u-roomList{
+    .active{
+        background: #EFF4F5;
+    }
+    
+    li{
+        height: 24px;
+        line-height: 24px;
+        padding: 10px 15px;
+        &:hover{
+            background: #EFF4F5;
         }
     }
 }

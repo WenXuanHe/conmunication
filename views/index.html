@@ -12,20 +12,22 @@
     </header>
     <div class="chat_content flex">
         <div class="chat_content_left">
+            <header class='header'>房间列表</header>
             <ul class="u-roomList" id="roomList"> </ul>
-            <div class="chat_field">
-              <input type="text" id="roomName" />
-              <input type="button" id="addRoomList" value='新增房间'/>
+            <div class="chat_field area">
+              <input type="text" id="roomName" class="form-control w100"/>
+              <a href="javascript:void(0);"  id="addRoomList" class='btn btn-dark' >新增</a>
             </div>
         </div>
         <div class="chat_content_body col">
             <div class="chat_content_body_area" id="message"></div>
-            <div class="chat_field">
-                <input type="text" id="inputValue" />
-                <input type="button" id="send-button" value='send'/>
+            <div class="chat_field area">
+                <input type="text" id="inputValue" class='form-control'/>
+                <a href="javascript:void(0);" id="send-button" class='btn btn-green'> send </a>
             </div>
-        </div>
+        </div> 
     </div>
+    
 </div>
     <script type="text/javascript" src="/socket.io/socket.io.js" ></script>
     <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>

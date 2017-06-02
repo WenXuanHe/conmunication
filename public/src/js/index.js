@@ -5,6 +5,7 @@ import Chat from './chat';
 
 let socket = io.connect();
 let chat = new Chat(socket);
+let currentRoom = '';
 ////Create the Peer object
 var peer = new Peer({key: 'o220qcegi78k6gvi'});
 
@@ -18,10 +19,10 @@ peer.on('open', function(id) {
 
 // chat.getRoomList();
 
-socket.on("message", function(message){
-    var newElement = $("<div></div>").text(message.text);
-    $("#message").append(newElement);
-});
+// socket.on("message", function(message){
+//     var newElement = $("<div></div>").text(message.text);
+//     $("#message").append(newElement);
+// });
 
 socket.on('SOCKETID', function(id){
     Cookies.set('SOCKETID', id);
@@ -40,6 +41,7 @@ socket.on("joinResult", function(joinResult){
 /////让用户知道自己进入了房间
 socket.on("join", function(res){
     var newElement = $("<div></div>").text(res.text);
+    currentRoom = res.currentRoom;
     $("#message").append(newElement);
 });
 
