@@ -37,6 +37,7 @@
     "nodemon": "^1.8.1",
     "pear": "^0.2.1",
     "peer": "^0.2.8",
+    "redis": "^2.7.1",
     "sass-loader": "^6.0.5",
     "socket.io": "^2.0.1",
     "socket.io-client": "^2.0.1",
