@@ -1,26 +1,6 @@
-@import './reset.scss';
 @import './mixin.scss';
-
-.flex{
-    @include flex;
-    .col{
-        @include col(0);
-    }
-    @for $i from 1 to 7{
-        .col-#{$i}{
-            @include col($i);
-        }
-    }
-}
-.btn{
-    @include btn(16);
-}
-.w30{
-    width: 30px;
-}
-.w100{
-    width: 100px;
-}
+@import './reset.scss';
+@import './common.scss';
 
 .area {
     background: #eff4f5;

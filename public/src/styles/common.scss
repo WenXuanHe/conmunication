@@ -1,0 +1,39 @@
+@import './mixin.scss';
+
+.flex{
+    @include flex;
+    .col{
+        @include col(0);
+    }
+    @for $i from 1 to 7{
+        .col-#{$i}{
+            @include col($i);
+        }
+    }
+}
+@for $i from 1 to 20{
+    .w#{$i*10}{
+        width:#{$i*10}px;
+    }
+    .h#{$i*10}{
+        height: #{$i*10}px;
+    }
+}
+.btn{
+    @include btn(16);
+}
+
+.clear {
+    clear: both;
+}
+
+.clearfix:before,.clearfix:after{
+    content:"";
+    display:table;
+}
+.clearfix:after{
+    clear:both;
+}
+.clearfix{
+    *zoom:1;
+}
