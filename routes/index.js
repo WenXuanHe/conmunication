@@ -28,7 +28,9 @@ router.get('/chat', async function (ctx, next) {
 
     try{
         let name = ctx.query.name;
-        ctx.cookies.set('SOCKETID', md5(name));
+        ctx.cookies.set('SOCKETID', md5(name), {
+            httpOnly:false
+        });
 
         next();
         return ctx.render('index', {userName:name});
