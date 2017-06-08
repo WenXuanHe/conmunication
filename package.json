@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node bin/www",
+    "start": "supervisor bin/www",
     "pm2": "pm2 start bin/www ",
     "dev": "webpack --watch"
   },
@@ -30,21 +30,25 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "css-loader": "^0.28.3",
-    "extract-text-webpack-plugin": "^2.1.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "jquery": "^1.7.2",
     "js-cookie": "^2.1.4",
+    "koa-session2": "^2.2.4",
     "koa-swig": "^2.2.1",
+    "md5": "^2.2.1",
     "node-sass": "^4.5.3",
     "nodemon": "^1.8.1",
-    "pear": "^0.2.1",
     "peer": "^0.2.8",
+    "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.5",
+    "precss": "^1.4.0",
     "redis": "^2.7.1",
     "sass-loader": "^6.0.5",
     "socket.io": "^2.0.1",
     "socket.io-client": "^2.0.1",
-    "style-loader": "^0.18.1",
+    "style-loader": "^0.18.2",
+    "supervisor": "^0.12.0",
     "url-loader": "^0.5.8",
-    "webpack": "^2.6.1"
+    "webpack": "^1.13.1"
   }
 }

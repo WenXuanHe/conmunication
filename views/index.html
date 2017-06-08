@@ -1,14 +1,14 @@
 {% extends 'layout.html' %}
 {% block title %} {{title}} {% endblock %}
 {% block head %}
-    <link rel="stylesheet" type="text/css" href="/dist/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="/dist/styles/index.css">
 {% endblock %}
 
 {% block content %}
 <div class="chat_box">
     <header class="chat_header">
         <!-- <img src="" /> -->
-        <span>无冕之王</span>
+        <span>{{userName}}</span>
     </header>
     <div class="chat_content flex">
         <div class="chat_content_left">
@@ -25,9 +25,9 @@
                 <input type="text" id="inputValue" class='form-control'/>
                 <a href="javascript:void(0);" id="send-button" class='btn btn-green'> send </a>
             </div>
-        </div> 
+        </div>
     </div>
-    
+
 </div>
     <script type="text/javascript" src="/socket.io/socket.io.js" ></script>
     <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>

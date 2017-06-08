@@ -37,3 +37,24 @@
 .clearfix{
     *zoom:1;
 }
+
+.area {
+    background: #eff4f5;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+}
+.form-control{
+    padding: 6px 12px;
+    margin-right: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color:#555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.075);
+    &:focus{
+        border-color: $blue;
+    }
+}

@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block title %} {{title}} {% endblock %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/dist/styles/login.css">
+{% endblock %}
+
+{% block content %}
+<div class="grid wheat">
+    <div class='item'>
+        <input type="text" placeholder="请输入姓名" id="name" class="form-control" />
+    </div>
+    <div class="area item">
+        <a href="javascript:void(0);"  id="submit" class='btn btn-green'>提交</a>
+    </div>
+</div>
+<script src='/dist/login.js' type='text/javascript'></script>
+{% endblock %}

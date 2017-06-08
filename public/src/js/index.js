@@ -14,18 +14,14 @@ peer.on('open', function(id) {
     //客户端与服务端之间的 WebSocket 通讯连接打开之后，客户端就向服务端发送一条握手消息
     socket.emit('hander', {
         peerID:id
-    }); 
+    });
 });
 
 // chat.getRoomList();
 
-// socket.on("message", function(message){
-//     var newElement = $("<div></div>").text(message.text);
-//     $("#message").append(newElement);
-// });
-
-socket.on('SOCKETID', function(id){
-    Cookies.set('SOCKETID', id);
+socket.on("message", function(message){
+    var newElement = $("<div></div>").text(message.msg);
+    $("#message").append(newElement);
 });
 
 socket.on("ChangeNameResult", function(newName){
@@ -40,8 +36,7 @@ socket.on("joinResult", function(joinResult){
 
 /////让用户知道自己进入了房间
 socket.on("join", function(res){
-    var newElement = $("<div></div>").text(res.text);
-    currentRoom = res.currentRoom;
+    var newElement = $("<div></div>").text(res.msg);
     $("#message").append(newElement);
 });
 
@@ -52,10 +47,11 @@ socket.on('roomList', function(roomList){
     roomList.forEach(function(item){
         $('#roomList').append($('<li></li>').text(item));
     });
-    
+
 });
 
 $("#send-button").click(function(){
+
     chat.sendMessage(document.querySelector('#inputValue').value);
     document.querySelector('#inputValue').value="";
 });

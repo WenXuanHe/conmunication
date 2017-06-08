@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 export default class Chat{
 
     constructor(socket){
@@ -6,7 +8,9 @@ export default class Chat{
 
     //发送消息
     sendMessage(text){
+
         var data = {
+            SOCKETID: Cookies.get('SOCKETID'),
             text:text
         };
         this.socket.emit("message", data);
@@ -15,7 +19,7 @@ export default class Chat{
     //改名
     changeName(newName){
         this.socket.emit("changeName", newName);
-    }   
+    }
 
     //新建房间
     createRoom(newRoomName){

@@ -4,7 +4,8 @@ var path = require("path");
 
 module.exports = {
     entry: {
-        index:path.resolve(__dirname, "public/src/js/index.js")
+        index:path.resolve(__dirname, "public/src/js/index.js"),
+        login:path.resolve(__dirname, "public/src/js/login.js")
     },
     output: {
         path: path.resolve(__dirname, 'public/dist/'),
@@ -33,16 +34,16 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader']) //postcss-loader  自动补齐前缀
+                loader: ExtractTextPlugin.extract(['css-loader']) //postcss-loader  自动补齐前缀
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract(['css-loader','sass-loader'])
+                loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader'])
             }
         ]
     },
     plugins:[
-        new ExtractTextPlugin("./styles/style.css")
+        new ExtractTextPlugin("./styles/[name].css")
     ],
     devtool: 'source-map'
 }
