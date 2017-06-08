@@ -33,7 +33,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract(['css-loader'])
+                loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader']) //postcss-loader  自动补齐前缀
             },
             {
                 test: /\.scss$/,

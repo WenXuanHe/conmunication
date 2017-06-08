@@ -24,7 +24,7 @@ $h100par:100%;
     #{$name}:$value;
 }
 @mixin flex{
-    @include prefix('display', flex);
+    display:flex;
 }
 @mixin col($column){
     @if $column > 0 { width:(100%/$column)}
