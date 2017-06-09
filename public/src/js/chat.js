@@ -33,10 +33,10 @@ export default class Chat{
     }
 
     //加入房间
-    joinRoom(roomName){
+    joinRoom(roomName, oldRoom){
         this.socket.emit("joinRoom", {
             RoomName:roomName,
-            oldRoom:$('.current').text()
+            oldRoom
         });
     }
 }

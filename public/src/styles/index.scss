@@ -17,12 +17,14 @@
         line-height:$chat_header_height;
         color:#ffffff;
         padding-left:.5em;
+
     }
     .header{
         border-bottom: 1px solid #E2EAEC;
         height: 40px;
         line-height: 40px;
         padding-left: 10px;
+        flex-basis: 100%;
     }
     .chat_content{
         height: $chat_height - $chat_header_height;
@@ -35,18 +37,26 @@
         }
     }
     .chat_content_body, .chat_content_left{
-        position:relative;
-        .chat_field{
-            position:absolute;
-            bottom:0;
-            width: 100%;
-        }
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .chat_content_body_area{
+        flex-basis: 100%;
+        height: 88%;
+        overflow-y: scroll;
+    }
+    .chat_field{
+        align-self: flex-end;
     }
 }
 
 .u-roomList{
+    flex-basis: 100%;
+    height: 78%;
+    overflow-y: scroll;
     .active{
         background: #EFF4F5;
+        color: burlywood;
     }
 
     li{
