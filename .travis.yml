@@ -1,0 +1,6 @@
+language: node_js
+
+node_js:
+
+//0.6为Node.js的版本
+- 0.6
