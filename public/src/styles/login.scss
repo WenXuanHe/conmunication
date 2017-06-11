@@ -2,11 +2,14 @@
 @import './common.scss';
 
 body{
-    background: #f2f2f2;
+    @include checkerboard(30px, #eee, rgba(0,0,0,.25));
     display: grid;
 }
 .wheat{
     background: wheat;
+    border: 1em solid transparent;
+    background: linear-gradient(white, white), url(http://csssecrets.io/images/stone-art.jpg);
+
 }
 .grid{
     display:grid;
