@@ -1,6 +1,9 @@
 language: node_js
 
 node_js:
-
-//0.6为Node.js的版本
 - 7.9.0
+cache:
+  directories:
+    - "node_modules"
+script:
+- npm run test
