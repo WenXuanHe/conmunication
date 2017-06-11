@@ -6,7 +6,7 @@
     "start": "supervisor bin/www",
     "pm2": "pm2 start bin/www ",
     "dev": "webpack --watch",
-    "test": "vows --spec"
+    "test": "pm2 start bin/www "
   },
   "dependencies": {
     "debug": "^2.6.3",
@@ -40,6 +40,7 @@
     "node-sass": "^4.5.3",
     "nodemon": "^1.8.1",
     "peer": "^0.2.8",
+    "pm2": "^2.5.0",
     "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.5",
     "precss": "^1.4.0",
