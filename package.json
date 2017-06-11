@@ -5,7 +5,8 @@
   "scripts": {
     "start": "supervisor bin/www",
     "pm2": "pm2 start bin/www ",
-    "dev": "webpack --watch"
+    "dev": "webpack --watch",
+    "test": "vows --spec"
   },
   "dependencies": {
     "debug": "^2.6.3",
