@@ -9,3 +9,22 @@ script:
 before_install:
 - openssl aes-256-cbc -K $encrypted_6128db8e64b5_key -iv $encrypted_6128db8e64b5_iv
   -in id_rsa.enc -out id_rsa -d
+
+after_script:
+
+//构建完毕自动将代码分发到远程主机
+- scp -o StrictHostKeyChecking=no app.js root@180.76.244.108:/home/conmunication
+
+-in .travis/id_rsa.enc -out id_rsa -d
+
+- mv id_rsa ~/.ssh -f
+
+- chmod 600 ~/.ssh/id_rsa
+
+# 配置 ssh
+
+- eval $(ssh-agent)
+
+- ssh-add ~/.ssh/id_rsa
+
+- cp .travis/ssh_config ~/.ssh/config
