@@ -1,41 +1,42 @@
 import Cookies from 'js-cookie';
 
-export default class Chat{
+export default class Chat {
 
-    constructor(socket){
+    constructor (socket) {
         this.socket = socket;
     }
 
     //发送消息
-    sendMessage(text){
+    sendMessage (text) {
 
         var data = {
             SOCKETID: Cookies.get('SOCKETID'),
-            text:text
+            text: text
         };
+
         this.socket.emit("message", data);
     }
 
     //改名
-    changeName(newName){
+    changeName (newName) {
         this.socket.emit("changeName", newName);
     }
 
     //新建房间
-    createRoom(newRoomName){
+    createRoom (newRoomName) {
         this.socket.emit("createRoom", {
-            newRoomName:newRoomName
+            newRoomName: newRoomName
         });
     }
 
-    getRoomList(){
+    getRoomList () {
         this.socket.emit('getRoomList');
     }
 
     //加入房间
-    joinRoom(roomName, oldRoom){
+    joinRoom (roomName, oldRoom) {
         this.socket.emit("joinRoom", {
-            RoomName:roomName,
+            RoomName: roomName,
             oldRoom
         });
     }
