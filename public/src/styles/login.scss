@@ -8,8 +8,25 @@ body{
 .wheat{
     background: wheat;
     border: 1em solid transparent;
-    background: linear-gradient(white, white), url(http://csssecrets.io/images/stone-art.jpg);
+    background:
+    linear-gradient(white, white),
+    url(http://csssecrets.io/images/stone-art.jpg);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-size: cover;
+}
+@keyframes ants{
+    to {
+        background-position: 100% 100%;
+    }
+}
 
+.ant{
+    padding: 1em;
+    border:1px solid transparent;
+    background:linear-gradient(white, white) padding-box,
+    repeating-linear-gradient(-45deg, black 0, black 25%, white 0, white 50%) 0/.6em .6em;
+    animation: ants 12s linear infinite;
 }
 .grid{
     display:grid;
@@ -28,3 +45,52 @@ body{
     }
 }
 
+.ellepse{
+    width: 200px;
+    height: 100px;
+    // border-radius可以分开指定水平半径和垂直半径，可以使用百分比
+    border-radius:50%/50%;
+    background:orange;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+
+.half-ellepse{
+    width: 200px;
+    height: 100px;
+    border-radius:50% / 100% 100%  0 0;
+    background:orange;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+.quanter-ellipse{
+    width: 200px;
+    height: 100px;
+    border-radius:100% 0 0 0/ 100% 0  0 0;
+    background:orange;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+
+.parallelograms{
+    width: 200px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    position:relative;
+}
+.parallelograms::before{
+    content: '';
+    background:orange;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    transform: skewX(45deg);
+    z-index:-1;
+}
