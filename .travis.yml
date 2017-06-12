@@ -12,16 +12,13 @@ before_install:
 
 after_script:
 
-//构建完毕自动将代码分发到远程主机
 - scp -o StrictHostKeyChecking=no app.js root@180.76.244.108:/home/conmunication
 
--in .travis/id_rsa.enc -out id_rsa -d
+- in .travis/id_rsa.enc -out id_rsa -d
 
 - mv id_rsa ~/.ssh -f
 
 - chmod 600 ~/.ssh/id_rsa
-
-# 配置 ssh
 
 - eval $(ssh-agent)
 
