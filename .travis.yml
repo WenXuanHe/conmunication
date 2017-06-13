@@ -15,4 +15,5 @@ before_install:
 - ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config ~/.ssh/config
 after_script:
-- scp -o StrictHostKeyChecking=no app.js root@180.76.244.108:/home/conmunication
+- tar zcvf conmunication.tar.gz /*
+- scp -o StrictHostKeyChecking=no conmunication.tar.gz  root@180.76.244.108:/home/conmunication/
