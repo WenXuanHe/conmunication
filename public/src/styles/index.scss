@@ -2,6 +2,11 @@
 @import './reset.scss';
 @import './common.scss';
 
+.prompt{
+    font-size: 12px;
+    text-align: center;
+    color: #41d32f;
+}
 .chat_box{
     width: $chat_width;
     height: $chat_height;
