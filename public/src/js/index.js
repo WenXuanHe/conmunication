@@ -1,6 +1,5 @@
 import '../styles/index.scss';
 import io from 'socket.io-client';
-import $ from 'jquery';
 import Cookies from 'js-cookie';
 import Chat from './chat';
 
@@ -58,11 +57,19 @@ socket.on('roomList', function (roomList) {
     });
 
     $('#roomList').off('click').on('click', function (e) {
-        var room = $(e.target).text();
+        CURRENT_ROOM = $(e.target).text();
 
-        chat.joinRoom(room, $('.active').text());
-        CURRENT_ROOM = room;
+        chat.joinRoom(CURRENT_ROOM);
     });
+});
+socket.on('chatInfo', function(msg){
+    $("#message").empty();
+    var fragment = document.createDocumentFragment();
+    msg.forEach(function(item){
+        let newElement = $("<div></div>").text(msg.msg);
+        $(fragment).append(newElement);
+    });
+    $("#message").append(fragment);
 });
 
 $("#send-button").click(function () {
@@ -72,8 +79,12 @@ $("#send-button").click(function () {
 });
 
 $("#addRoomList").click(function () {
-    chat.createRoom($('#roomName').val());
-    document.querySelector('#roomName').value = "";
+    //稀释点击事件
+    if($('#roomName').val() !== CURRENT_ROOM){
+
+        chat.createRoom($('#roomName').val());
+        document.querySelector('#roomName').value = "";
+    }
 });
 
 window.onkeydown = function (e) {

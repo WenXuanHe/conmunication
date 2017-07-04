@@ -1,23 +1,5 @@
-let router = require('koa-router')();
-// let crypto = require('crypto');
+let router = require('koa-router')()
 var md5 = require('md5');
-
-// let getSocketId = function(crypto, name){
-
-//     return new Promise(function(resolve, reject){
-
-//         let salt = crypto.randomBytes(64).toString('base64');
-//         crypto.pbkdf2(name, salt, 10000, 64, function(err, hash){
-//             if(err) return reject({ code:0, err });
-
-//             hash = new Buffer(hash).toString('hex');
-//             resolve({
-//                 code:1,
-//                 hash
-//             });
-//         });
-//     });
-// }
 
 router.get('/', async function (ctx, next) {
     next();
